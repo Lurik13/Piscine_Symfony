@@ -59,9 +59,19 @@
     <head>
         <title>Mendeleiev</title>
         <meta charset="UTF-8">
+        <style>
+            td {
+                border: 1px solid black;
+                padding: 10px;
+            }
+            .void {
+                border: 0px;
+            }
+        </style>
     </head>
-    <body>
-        <table>
+    <body style="background-color:#1e1f22;">
+        <table style="color:white">
+            <!-- Skip toutes les cases vides -->
             <?php $i = 0; ?>
             <?php foreach ($elements as $element): ?>
                 <?php if ($element->position == 0): ?>
@@ -69,16 +79,28 @@
                     <tr>
                 <?php endif; ?>
                 <?php while ($element->position != $i):?>
-                    <td style="padding:10px"></td>
+                    <td class="void"></td>
                     <?php $i++ ?>
                 <?php endwhile;?>
                 <?php $i++ ?>
 
-                <?php if ($element->position == 17): ?> 
-                    <td style="border: 1px solid black; padding:10px; color:white; background-color:#623842">
+                <!-- Pour les cases pleines -->
+                <?php if ($element->position == 0 && $element->number != 1): ?> 
+                    <td style="background-color:#224354">
+                <?php elseif ($element->position == 1): ?> 
+                    <td style="background-color:#4b372e">
+                <?php elseif ($element->position == 17): ?> 
+                    <td style="background-color:#3f3370">
+                <?php elseif ($element->position >= 2 && $element->position <= 11 && ($element->number < 109 || $element->number > 117)): ?> 
+                    <td style="background-color:#2c4425">
+                <?php elseif ($element->number >= 109 && $element->number <= 117): ?> 
+                    <td style="background-color:#46474c">
+                <?php elseif (in_array($element->number, [5, 14, 32, 33, 51, 52])): ?> 
+                    <td style="background-color:#612339">
+                <?php elseif (in_array($element->number, [13, 31, 49, 50, 81, 82, 83, 84, 85])): ?> 
+                    <td style="background-color:#664915">
                 <?php else : ?>
-                    <td style="border: 1px solid black; padding:10px;">
-                    
+                    <td style="background-color:#6b2b00">
                 <?php endif; ?> 
                     <h4><?php echo $element->name ?></h4>
                     <ul>
