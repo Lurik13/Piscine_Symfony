@@ -7,12 +7,18 @@
     </head>
     <body>
         <form>
-            <div>Firstname: <input type="text" id="firstname" required></div>
-            <div>Name: <input type="text" id="name" required></div>
-            <div>Age: <input type="number" id="age" required></div>
-            <div>Phone: <input type="tel" id="phone" required></div>
-            <div>Email: <input type="email" id="email" required></div>
-            <div>Student at 42?: <input type="checkbox" id="student" required></div>
+            <div><label>Firstname: 
+                <input type="text" id="firstname" required /></label></div>
+            <div><label>Name: 
+                <input type="text" id="name" required /></label></div>
+            <div><label>Age: 
+                <input type="number" id="age" required /></label></div>
+            <div><label>Phone: 
+                <input type="tel" id="phone" required /></label></div>
+            <div><label>Email: 
+                <input type="email" id="email" required /></label></div>
+            <div><label>Student at 42?: 
+                <input type="checkbox" id="student" required /></label></div>
             <div>
                 <label for="gender_male">Male</label>
                 <input type="radio" id="gender_male" name="gender" value="Male" checked>
@@ -21,7 +27,7 @@
                 <label for="gender_other">Other</label>
                 <input type="radio" id="gender_other" name="gender" value="Other">
             </div>
-            <button onclick="displayFormContents()">Submit</button>
+            <button onclick="displayFormContents()">Run that sexy Javascript!</button>
         </form>
     </body>
 </html>
