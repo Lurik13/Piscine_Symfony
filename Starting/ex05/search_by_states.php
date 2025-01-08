@@ -24,28 +24,31 @@
         return (false);
     }
 
+    function get_key($table, $value)
+    {
+        if ($value == false)
+            return false;
+        foreach($table as $table_key => $table_value)
+        {
+            if ($table_value == $value)
+                return $table_key;
+        }
+        return false;
+    }
+
     function is_capital($found, $loc)
     {
         global $states, $capitals;
         if ($found == false && in_array($loc, $capitals))
         {
-            foreach ($capitals as $capital_key => $capital_value)
+            $state_key = get_key($states, get_key($capitals, $loc));
+            if ($state_key)
             {
-                if ($capital_value == $loc && in_array($capital_key, $states))
-                {
-                    foreach ($states as $state_key => $state_value)
-                    {
-                        if ($state_value == $capital_key)
-                        {
-                            echo "$loc is the capital of $state_key.\n";
-                            return (true);
-                        }
-                    }
-                    break ;
-                }
+                echo "$loc is the capital of $state_key.\n";
+                return true;
             }
         }
-        return ($found);
+        return $found;
     }
 
     // function search_by_states("Oregon, trenton, Topeka, NewJersey")

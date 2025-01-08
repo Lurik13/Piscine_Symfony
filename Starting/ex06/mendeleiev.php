@@ -13,7 +13,7 @@
         public $electron;
         public int $nb_electrons;
 
-        public function __init($line)
+        public function __construct($line)
         {
             $categories = explode(", ", $line);
             $this->name = strtok($line, " ");
@@ -34,7 +34,7 @@
 
     function extractAfterColon($line)
     {
-        $parts = explode(':', $line, 2);
+        $parts = explode(':', $line);
         return trim($parts[1]);
     } 
 
@@ -44,8 +44,7 @@
         $elements = array();
         while ($line)
         {
-            $new_elem = new Element;
-            $new_elem->__init($line);
+            $new_elem = new Element($line);
             array_push($elements, $new_elem);
             $line = fgets($file);
         }
